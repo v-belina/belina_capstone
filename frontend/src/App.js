@@ -12,6 +12,8 @@ import PrivateUserProfile from "./components/pages/privateUserProfilePage";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
 
+import ItemsPage from "./components/pages/ItemsPage";
+
 export const UserContext = createContext();
 //test change
 //test again
@@ -32,6 +34,7 @@ const App = () => {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
+          <Route exact path="/viewItems" element={<ItemsPage />} />
         </Routes>
       </UserContext.Provider>
     </>
