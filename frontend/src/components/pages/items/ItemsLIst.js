@@ -68,6 +68,13 @@ export default function ItemsList() {
               Delete
             </Button>
           </td>
+          <td>
+          <Link to={`/editItem/${_id}`}>
+            <Button variant="warning">
+              Edit
+            </Button>
+          </Link>
+        </td>
         </tr>
       );
     });
