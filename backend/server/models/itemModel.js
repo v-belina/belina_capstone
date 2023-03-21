@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const { Schema } = require("zod");
+const { Schema } = mongoose;
 
-//user schema/model
-const newItemSchema = new mongoose.Schema(
+// Item schema/model
+const newItemSchema = new Schema(
   {
     itemId: {
       type: String,
@@ -23,4 +23,4 @@ const newItemSchema = new mongoose.Schema(
   { collection: "Items" }
 );
 
-module.exports = mongoose.model('items', newItemSchema)
+module.exports = mongoose.model('items', newItemSchema);
