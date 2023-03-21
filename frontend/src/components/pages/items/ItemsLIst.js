@@ -34,28 +34,37 @@ export default function ItemsList() {
 
   const deleteItem = async (_id) => {
     try {
-      await axios.delete(`http://localhost:8081/item/${_id}`);
+      const response = await axios.delete(`http://localhost:8081/item/deleteItemById/${_id}`);
+  
+      if (response.status !== 200) {
+        const message = `An error occurred: ${response.statusText}`;
+        console.error(message);
+        window.alert(message);
+        return;
+      }
+  
       const newRecord = item.filter((el) => el._id !== _id);
       setItem(newRecord);
       console.log("deleted");
     } catch (error) {
-      console.log("Error deleting item", error);
+      console.error("Error deleting item", error);
       alert("Error deleting an item");
     }
   };
+  
+  
 
   //the following will map out the records on the table
   function List() {
     return item.map((item) => {
-      const { itemId, itemName, itemPrice } = item; // item id should be '_id', not 'id'
+      const { _id, itemId, itemName, itemPrice } = item;
       return (
-        <tr key={itemId}> {/* each row in the table needs a unique 'key' prop */}
+        <tr key={_id}>
           <td>{itemId}</td>
           <td>{itemName}</td>
           <td>{itemPrice}</td>
           <td>
-            {}
-            <Button variant="danger" onClick={() => deleteItem(itemId)}>
+            <Button variant="danger" onClick={() => deleteItem(_id)}>
               Delete
             </Button>
           </td>
@@ -63,6 +72,7 @@ export default function ItemsList() {
       );
     });
   }
+  
 
   return (
     <div>

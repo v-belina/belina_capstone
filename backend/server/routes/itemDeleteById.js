@@ -1,22 +1,23 @@
 const express = require("express");
 const router = express.Router();
 
-const newItemModel = require("../models/itemModel");
+const ItemModel = require("../models/itemModel");
 
-router.delete("/deleteItem/:id", async (req, res) => {
-  const id = req.params.id;
+router.delete("/deleteItemById/:id", async (req, res) => {
+  const { id } = req.params;
 
-  newItemModel.deleteById(id, function (err, item) {
-    if (err) {
-      console.log(err);
-      res.status(500).send("An error occurred while deleting the item.");
-    }
-    if (item == null) {
-      res.status(404).send("Item not found.");
+  try {
+    const result = await ItemModel.findByIdAndDelete(id);
+
+    if (result === null) {
+      res.status(404).send(`Item with ID '${id}' does not exist.`);
     } else {
-      return res.json(item);
+      res.status(200).send(`Item with ID '${id}' was deleted.`);
     }
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error deleting item");
+  }
 });
 
 module.exports = router;
