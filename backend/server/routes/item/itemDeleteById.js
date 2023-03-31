@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const ItemModel = require("../models/itemModel");
+const ItemModel = require("../../models/itemModel");
 
 router.delete("/deleteItemById/:id", async (req, res) => {
   const { id } = req.params;
