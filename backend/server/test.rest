@@ -50,3 +50,64 @@ Content-Type: application/json
 
 ###
 POST  http://localhost:8081/user/deleteAll
+###
+
+//ITEMS
+
+GET http://localhost:8081/item/getAll
+Content-Type: application/json
+
+###
+POST http://localhost:8081/item/createNewItem
+Content-Type: application/json 
+
+{
+    "id" : "_salad_",
+    "name" : "House Salad",
+    "price" : 11.00
+}
+
+###
+GET http://localhost:8081/item/getItemById/_salad_ HTTP/1.1
+Content-Type: application/json
+
+###
+GET  http://localhost:8081/item/getItemByDBId/6426dd96ce3ef0237ff01b48
+Content-Type: application/json 
+
+###
+DELETE http://localhost:8081/item/deleteItemById/6418fd4a6109200daaac192f
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:8081/item/deleteAll HTTP/1.1
+Content-Type: application/json
+
+{
+}
+
+###
+
+PUT http://localhost:8081/item/editItem/6426d6c7ce3ef0237ff01b14 
+Content-Type: application/json
+{
+  "id": "_salad_",
+  "name": "Ceaser Salad",
+  "price": 15
+
+}
+
+###
+//TICKETS
+POST http://localhost:8081/ticket/createNew
+Content-Type: application/json
+{
+    "serverName": "John Doe",
+  "items" : ["Item 5", "Item 2", "Item 4"],
+  "totalSum" : 120
+}
+
+###
+GET http://localhost:8081/ticket/getAll
+###
