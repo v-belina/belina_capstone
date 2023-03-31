@@ -11,8 +11,13 @@ import Signup from "./components/pages/registerPage";
 import PrivateUserProfile from "./components/pages/privateUserProfilePage";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
-
-import ItemsPage from "./components/pages/ItemsPage";
+//ITEMS
+import ItemsPage from "./components/pages/items/itemsPage";
+import NavbarItems from "./components/pages/items/itemsNavbar";
+import CreateItem from "./components/pages/items/createItem";
+import EditItem from "./components/pages/items/editItems";
+import Item from "./components/pages/items/items";
+import ItemsList from "./components/pages/items/ItemsLIst";
 
 export const UserContext = createContext();
 //test change
@@ -34,7 +39,12 @@ const App = () => {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
+          
           <Route exact path="/viewItems" element={<ItemsPage />} />
+          <Route exact path="/createNewItem" element={<CreateItem />} />
+          <Route exact path="/editItem/:id" element={<EditItem />} /> 
+          <Route exact path="/viewItemsList" element={<ItemsList/>} /> 
+          <Route exact path="/item" element={<Item/>} />     
         </Routes>
       </UserContext.Provider>
     </>

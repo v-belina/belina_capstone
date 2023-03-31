@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 import NavbarItems from "./itemsNavbar";
 import axios from "axios";
-import Item from "./items";
+import EditItem from "./editItems";
 
 //main component in this file
 export default function ItemsList() {
