@@ -2,32 +2,31 @@ const express = require("express");
 const { newItemValidation } = require("../../models/itemValidator");
 const router = express.Router();
 const newItemModel = require("../../models/itemModel");
+const mongoose = require("mongoose");
 
-router.put("/editItem/:id", async (req, res) => {
+router.put('/editItem/:id', async (req, res) => {
   const { id } = req.params;
-  const { error } = newItemValidation(req.body);
-  
-  if (error) {
-    return res.status(400).send({ message: error.details[0].message });
+  const { itemId, itemName, itemPrice } = req.body;
+  console.log('Received id:', id);
+  // Validate the id
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ message: 'Invalid id' });
   }
-  
-  newItemModel.findByIdAndUpdate(
-    id,
-    {
-      id: req.body.id,
-      name: req.body.name,
-      price: req.body.price,
-    },
-    { new: true },
-    (err, item) => {
-      if (err) {
-        console.log(err);
-        return res.status(500).send("Error updating item");
-      }
-  
-      return res.status(200).send(item);
+
+  try {
+    const updatedItem = await newItemModel.findByIdAndUpdate(
+      id,
+      { itemId, itemName, itemPrice },
+      { new: true }
+    );
+    if (!updatedItem) {
+      return res.status(404).json({ message: 'Item not found' });
     }
-  );
+    return res.status(200).json(updatedItem);
+  } catch (error) {
+    return res.status(500).json({ message: 'Error updating item', error });
+  }
 });
 
 module.exports = router;
+
