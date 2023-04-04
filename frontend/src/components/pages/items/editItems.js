@@ -61,9 +61,9 @@ export default function EditItem() {
     e.preventDefault();
   
     const editedItem = {
-      id: form.id,
-      name: form.name,
-      price: parseInt(form.price), // Convert the price to an integer if it's a string
+      itemId: form.itemId,
+      itemName: form.itemName,
+      itemPrice: parseInt(form.itemPrice), // Convert the price to an integer if it's a string
     };
   
     const response = await fetch(`http://localhost:8081/item/editItem/${params.id.toString()}`, {
@@ -94,33 +94,40 @@ export default function EditItem() {
         <Form onSubmit={onSubmit}>
           <InputGroup className="mb-3">
             <InputGroup.Text>ID</InputGroup.Text>
-            <FormControl type="text" placeholder="Enter new ID"
-            id="id"
-            name="id"
-            value={form.id}
-            onChange={(e) => updateForm({ id: e.target.value })}
-            />
+            <FormControl 
+  type="text" 
+  placeholder="Enter new ID"
+  id="id"
+  name="id"
+  value={form.id}
+  onChange={(e) => updateForm({ itemId: e.target.value })}
+/>
           </InputGroup>
             
             <InputGroup className="mb-3">
               <InputGroup.Text>Name</InputGroup.Text>
-              <FormControl type="text" placeholder="Enter new name"
-              id="name"
-              name="name"
-              value={form.name}
-              onChange={(e) => updateForm({ name: e.target.value })}
-            />
-            </InputGroup>
+              <FormControl 
+  type="text" 
+  placeholder="Enter new name"
+  id="name"
+  name="name"
+  value={form.name}
+  onChange={(e) => updateForm({ itemName: e.target.value })}
+/>
 
-            <InputGroup className="mb-3">
-              <InputGroup.Text>Price</InputGroup.Text>
-              <FormControl type="text" placeholder="Enter a price"
-              id="price"
-              price="price"
-              value={form.price}
-              onChange={(e) => updateForm({ price: parseInt(e.target.value) })}
-            />
             </InputGroup>
+            <InputGroup className="mb-3">
+  <InputGroup.Text>Price</InputGroup.Text>
+  <FormControl 
+  type="text" 
+  placeholder="Enter a price"
+  id="price"
+  name="price"
+  value={form.price}
+  onChange={(e) => updateForm({ itemPrice: parseInt(e.target.value) })}
+/>
+</InputGroup>
+
             <input type="submit" value="Update" className="btn btn-primary" />
             </Form>
 
