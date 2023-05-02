@@ -1,20 +1,24 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const uuid = require ('uuid');
+const ItemPrice = require('../../models/itemModel').ItemPrice;
 
-const itemPriceSchema = new mongoose.Schema({
+
+const itemSchema = new mongoose.Schema({
   itemName: { type: String, required: true },
-  price: { type: Number, required: true }
+  itemId: { type: String, required: true },
+  price: { type: Number, required: false }
 });
-
-const ItemPrice = mongoose.model('ItemPrice', itemPriceSchema);
 
 const ticketSchema = new mongoose.Schema({
   ticketNumber: { type: String, unique: true, default: uuid.v4 },
   serverName: { type: String, required: true },
-  items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ItemPrice', required: true }],
+  items: [itemSchema],
   displayMessage: { type: String, default: 'Thank you for your business!' }
-}, { toJSON: { virtuals: true } });
+}, { 
+  toJSON: { virtuals: true },
+  timestamps: true
+});
 
 ticketSchema.pre('save', function (next) {
   if (this.isNew) {
@@ -25,9 +29,8 @@ ticketSchema.pre('save', function (next) {
   next();
 });
 
-ticketSchema.virtual('totalSum').get(async function() {
-  const itemPrices = await ItemPrice.find({ _id: { $in: this.items } }).select('price');
-  const totalSum = itemPrices.reduce((sum, itemPrice) => sum + itemPrice.price, 0);
+ticketSchema.virtual('totalSum').get(function() {
+  const totalSum = this.items.reduce((sum, item) => sum + item.price, 0);
   return totalSum;
 });
 
