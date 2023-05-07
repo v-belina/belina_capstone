@@ -43,22 +43,20 @@ const App = () => {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
-          
+
           <Route exact path="/viewItems" element={<ItemsPage />} />
           <Route exact path="/createNewItem" element={<CreateItem />} />
-          <Route exact path="/editItem/:id" element={<EditItem />} /> 
-          <Route exact path="/viewItemsList" element={<ItemsList/>} /> 
-          <Route exact path="/item" element={<Item/>} /> 
+          <Route exact path="/editItem/:id" element={<EditItem />} />
+          <Route exact path="/viewItemsList" element={<ItemsList />} />
+          <Route exact path="/item" element={<Item />} />
 
-          <Route exact path="/createTicket" element={<CreateTicket/>} />  
-          <Route exact path="/viewTickets" element={<TicketList/>} />   
-          <Route exact path="/editTicket/:id" element={<TicketForm/>} />  
+          <Route exact path="/createTicket" element={<CreateTicket />} />
+          <Route exact path="/viewTickets" element={<TicketList />} />
+          <Route exact path="/editTicket/:id" element={<TicketForm />} />
         </Routes>
       </UserContext.Provider>
     </>
   );
 };
 
-
-
-export default App
+export default App;

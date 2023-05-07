@@ -7,7 +7,7 @@ const newItemSchema = new Schema(
     itemId: {
       type: String,
       required: true,
-      label: "Item Id"
+      label: "Item Id",
     },
     itemName: {
       type: String,
@@ -23,4 +23,4 @@ const newItemSchema = new Schema(
   { collection: "Items" }
 );
 
-module.exports = mongoose.model('items', newItemSchema);
+module.exports = mongoose.model("items", newItemSchema);

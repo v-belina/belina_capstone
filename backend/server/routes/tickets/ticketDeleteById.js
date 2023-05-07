@@ -15,10 +15,14 @@ router.delete("/deleteTicketById/:id", async (req, res) => {
     const result = await TicketModel.findByIdAndDelete(id);
 
     if (result === null) {
-      return res.status(404).json({ error: `Ticket with ID '${id}' does not exist.` });
+      return res
+        .status(404)
+        .json({ error: `Ticket with ID '${id}' does not exist.` });
     }
 
-    return res.status(200).json({ message: `Ticket with ID '${id}' was deleted.` });
+    return res
+      .status(200)
+      .json({ message: `Ticket with ID '${id}' was deleted.` });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Error deleting Ticket" });
