@@ -110,4 +110,26 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8081/ticket/getAll
+Content-Type: application/json
 ###
+
+DELETE http://localhost:8081/ticket/deleteTicketById/6426ebe1b6de4b0fd3bdb317
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:8081/ticket/deleteAll
+Content-Type: application/json
+
+###
+PUT http://localhost:8081/ticket/editTicket/6426fc1f72a2764e22c001aa
+Content-Type: application/json
+{
+    "items":
+    [
+        "item 6",
+        "new 4"
+    ]
+}
+###
+

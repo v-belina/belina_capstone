@@ -18,6 +18,10 @@ import CreateItem from "./components/pages/items/createItem";
 import EditItem from "./components/pages/items/editItems";
 import Item from "./components/pages/items/items";
 import ItemsList from "./components/pages/items/ItemsLIst";
+//TICKETS
+import CreateTicket from "./components/pages/ticket/ticketsNew";
+import TicketList from "./components/pages/ticket/ticketsList";
+import TicketForm from "./components/pages/ticket/ticketEdit";
 
 export const UserContext = createContext();
 //test change
@@ -44,7 +48,11 @@ const App = () => {
           <Route exact path="/createNewItem" element={<CreateItem />} />
           <Route exact path="/editItem/:id" element={<EditItem />} /> 
           <Route exact path="/viewItemsList" element={<ItemsList/>} /> 
-          <Route exact path="/item" element={<Item/>} />     
+          <Route exact path="/item" element={<Item/>} /> 
+
+          <Route exact path="/createTicket" element={<CreateTicket/>} />  
+          <Route exact path="/viewTickets" element={<TicketList/>} />   
+          <Route exact path="/editTicket/:id" element={<TicketForm/>} />  
         </Routes>
       </UserContext.Provider>
     </>

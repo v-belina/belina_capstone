@@ -1,0 +1,9 @@
+body {
+    background-image: url('./Picture1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    .custom-card {
+      background-color: #d9d9d9;
+    }
+  }
