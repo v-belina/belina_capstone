@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const reportSchema = require("../../models/report/reportModel")
 
 // Define schema for ticket and item collections
 const ticketSchema = new mongoose.Schema({
-  date: Date,
-  items: [{ type: mongoose.Schema.Types.ObjectId, ref: "Item" }],
+  createdAt: Date,
+  Items: [{ type: mongoose.Schema.Types.ObjectId, ref: "Items" }],
 });
 
 const itemSchema = new mongoose.Schema({
@@ -15,7 +16,7 @@ const itemSchema = new mongoose.Schema({
 
 // Define models for ticket and item collections
 const TicketReport = mongoose.model("TicketReport", ticketSchema); // Changed the name of the model to TicketReport
-const Item = mongoose.model("Item", itemSchema);
+const Items = mongoose.model("Items", itemSchema); // Changed the name of the model to "Items"
 
 // Define route for report
 router.get("/:date", async (req, res) => {
@@ -23,13 +24,18 @@ router.get("/:date", async (req, res) => {
 
   try {
     // Get tickets for given date
-    const tickets = await TicketReport.find({ date: date }).populate("items");
+    const tickets = await TicketReport.find({
+      createdAt: {
+        $gte: new Date(date.setHours(0, 0, 0)),
+        $lt: new Date(date.setHours(23, 59, 59)),
+      },
+    }).populate("items");
 
     // Calculate total sum of ticket prices
     const totalSum = tickets.reduce((sum, ticket) => {
       return (
         sum +
-        ticket.items.reduce((itemSum, item) => {
+        ticket.Items.reduce((itemSum, item) => {
           return itemSum + item.price;
         }, 0)
       );

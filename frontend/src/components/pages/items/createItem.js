@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import NavbarItems from "./itemsNavbar";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
@@ -51,9 +50,8 @@ export default function CreateItem() {
   // This following section will display the form that takes the input from the user.
   // We refer to the functions we defined above for handling form changes.
   return (
-    <div>
-      <NavbarItems/>
-      <Card body outline color="success" className="mx-1 my-2" style={{ width: '30rem' }}>
+    <div className="d-flex justify-content-center">
+      <Card body outline color="success" className="mx-1 my-2 custom-card" style={{ width: '30rem' }}>
         <Card.Title>Add Item</Card.Title>
         <Card.Body> 
         <Form>

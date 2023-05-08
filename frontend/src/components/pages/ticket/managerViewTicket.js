@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
 import { Card } from "react-bootstrap";
 
-function TicketList() {
+export default function managerViewTickets() {
   const [tickets, setTickets] = useState([]);
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [itemDetails, getItemDetails] = useState(null);
@@ -23,16 +23,6 @@ function TicketList() {
 
     fetchTickets();
   }, []);
-
-  const handleEdit = async (ticketId) => {
-    try {
-      // Navigate to the edit ticket page with the ticket ID as a parameter
-      navigate(`/editTicket/${ticketId}`);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const accessTicket = async (ticket) => {
     try {
       const response = await axios.get(
@@ -70,7 +60,6 @@ function TicketList() {
       console.error(error);
     }
   };
-
   const deleteTicket = async (ticket) => {
     try {
       await axios.delete(
@@ -85,7 +74,6 @@ function TicketList() {
       console.error(error);
     }
   };
-  console.log("Selected ticket:", selectedTicket);
   return (
     <>
       <div style={{ textAlign: "center" }}>
@@ -125,12 +113,13 @@ function TicketList() {
                   >
                     View Ticket
                   </Button>
-                  {/*  THE FOLLOWING BUTTON HAD BEEN COMMENTED OUT*/}
-                  {/* <Button variant="danger" 
-                  className="btn btn-primary mr-4 mx-1 my-1"
-                  onClick={() => deleteTicket(ticket)}>
+                  <Button
+                    variant="danger"
+                    className="btn btn-primary mr-4 mx-1 my-1"
+                    onClick={() => deleteTicket(ticket)}
+                  >
                     Delete Ticket
-                  </Button> */}
+                  </Button>
                 </Card.Body>
               </Card>
             )
@@ -174,16 +163,9 @@ function TicketList() {
                 <li key={item.itemId}>{`${item.itemName} - $${item.price}`}</li>
               ))}
             </ul>
-            <Button
-              variant="primary"
-              onClick={() => handleEdit(selectedTicket._id)}
-            >
-              Edit Ticket
-            </Button>
           </Modal.Body>
         </Modal>
       )}
     </>
   );
 }
-export default TicketList;

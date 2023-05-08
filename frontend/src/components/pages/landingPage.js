@@ -10,10 +10,12 @@ const Landingpage = () => {
         <Card.Body className="text-center">
           <Card.Title>VVB</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">A starting point for an application.</Card.Subtitle>
-          <p>You can choose what you would like to do from the following list:</p>
-          <Card.Link href="viewItemsList">View a List of items available</Card.Link>
+          <p>You can choose your role as follows</p>
+          <Card.Link href="/managerPage">
+          <p></p>MANAGER</Card.Link>
           <br />
-          <Card.Link href="/createTicket">Create a new Ticket</Card.Link>
+          <Card.Link href="/serverPage">
+          <p></p>SERVER</Card.Link>
         </Card.Body>
       </Card>
     </div>

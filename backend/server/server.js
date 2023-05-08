@@ -25,6 +25,10 @@ const deleteAll = require("./routes/tickets/ticketDeletAll")
 const editTicketRoute = require('./routes/tickets/ticketEditTicket')
 const getTicketById = require('./routes/tickets/ticketGetById')
 
+//REPORT
+const Report = require('./routes/report/report')
+
+
 require('dotenv').config();
 const SERVER_PORT = 8081
 
@@ -47,7 +51,6 @@ app.use('/item', getItemById)
 app.use('/item', deleteAllItems)
 app.use("/item", deleteItemByIdRoute);
 app.use("/item", editItemRoute);
-app.use("/item", require("./routes/item/itemEditItem"));
 app.use("/item", require("./routes/item/itemGetItemByDB"));
 
 //TICKETS
@@ -57,6 +60,9 @@ app.use('/ticket', deleteTicketRoute)
 app.use('/ticket', deleteAll)
 app.use('/ticket', editTicketRoute)
 app.use('/ticket', getTicketById)
+
+//REPORT
+app.use('/report', Report)
 
 app.listen(SERVER_PORT, (req, res) => {
     console.log(`The backend service is running on port ${SERVER_PORT} and waiting for requests.`);

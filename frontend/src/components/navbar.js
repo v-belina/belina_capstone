@@ -3,6 +3,7 @@ import getUserInfo from "../utilities/decodeJwt";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import ReactNavbar from "react-bootstrap/Navbar";
+import GoBackButton from "./pages/goBack";
 
 // Here, we display our Navbar
 export default function Navbar() {
@@ -20,14 +21,17 @@ export default function Navbar() {
   // it seems.
   return (
     <ReactNavbar bg="dark" variant="dark">
-      <Container>
-        <Nav className="me-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/viewItems">Items Page</Nav.Link>
-          <Nav.Link href="/createTicket">Create New Ticket</Nav.Link>
-          <Nav.Link href="/viewTickets">View Tickets</Nav.Link>
-        </Nav>
-      </Container>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <GoBackButton />
+        <Container>
+          <Nav className="me-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            {/* <Nav.Link href="/viewItems">Items Page</Nav.Link>
+            <Nav.Link href="/createTicket">Create New Ticket</Nav.Link>
+            <Nav.Link href="/viewTickets">View Tickets</Nav.Link> */}
+          </Nav>
+        </Container>
+      </div>
     </ReactNavbar>
   );
 }

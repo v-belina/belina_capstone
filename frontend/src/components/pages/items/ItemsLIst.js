@@ -5,11 +5,20 @@ import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 import NavbarItems from "./itemsNavbar";
 import axios from "axios";
-import EditItem from "./editItems";
+import { useNavigate } from "react-router-dom";
 
 //main component in this file
 export default function ItemsList() {
   const [item, setItem] = useState([]);
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  const GoBackButton = () => {
+    return <button onClick={goBack}>Go Back</button>;
+  };
 
   useEffect(() => {
     //define the function to fetch the records from the database
@@ -58,40 +67,47 @@ export default function ItemsList() {
 
   function List() {
     return (
-      <div className="d-flex flex-wrap justify-content-center">
-        {item.map((item) => {
-          const { _id, itemId, itemName, itemPrice } = item;
-          return (
-            <Card
-              key={_id}
-              style={{ width: "350px", maxWidth: "90%", margin: "10px" }}
-              className="custom-card"
-            >
-              <Card.Body>
-                <Card.Title>{itemName}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  Price: ${itemPrice}
-                </Card.Subtitle>
-                <Card.Text>{itemId}</Card.Text>
-                <Button variant="danger" onClick={() => deleteItem(_id)}>
-                  Delete
-                </Button>
-                <Link to={`/editItem/${_id}`}>
-                  <Button variant="warning" style={{ marginLeft: 10 }}>
-                    Edit
-                  </Button>
-                </Link>
-              </Card.Body>
-            </Card>
-          );
-        })}
-      </div>
+        <div className="d-flex flex-wrap justify-content-center">
+          {item.map((item) => {
+            const { _id, itemId, itemName, itemPrice } = item;
+            return (
+              <Card
+                key={_id}
+                style={{ width: "350px", maxWidth: "90%", margin: "10px" }}
+                className="custom-card"
+              >
+                <Card.Body>
+                  <Card.Title>{itemName}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    Price: ${itemPrice}
+                  </Card.Subtitle>
+                  <Card.Text>{itemId}</Card.Text>
+                  <Link to={`/editItem/${_id}`}>
+                    <Button
+                      variant="warning"
+                      className="mx-1 my-1"
+                      style={{ marginLeft: 10 }}
+                    >
+                      Edit
+                    </Button>
+                    <mr></mr>
+                    <Button
+                      variant="danger"
+                      className="mx-1 my-1"
+                      onClick={() => deleteItem(_id)}
+                    >
+                      Delete
+                    </Button>
+                  </Link>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </div>
     );
   }
 
   return (
-    <div>
-      <NavbarItems />
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
@@ -99,6 +115,5 @@ export default function ItemsList() {
           <List />
         </div>
       </div>
-    </div>
   );
 }

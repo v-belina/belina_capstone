@@ -11,6 +11,7 @@ import Signup from "./components/pages/registerPage";
 import PrivateUserProfile from "./components/pages/privateUserProfilePage";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
+
 //ITEMS
 import ItemsPage from "./components/pages/items/itemsPage";
 import NavbarItems from "./components/pages/items/itemsNavbar";
@@ -22,6 +23,19 @@ import ItemsList from "./components/pages/items/ItemsLIst";
 import CreateTicket from "./components/pages/ticket/ticketsNew";
 import TicketList from "./components/pages/ticket/ticketsList";
 import TicketForm from "./components/pages/ticket/ticketEdit";
+
+//PAGES
+import ManagerPage from "./components/pages/managerPage";
+import ServerPage from "./components/pages/serverPage";
+import ServerItemsList from "./components/pages/items/serverItemsList";
+import ManagerViewTickets from "./components/pages/ticket/managerViewTicket";
+
+//HELP COMPONENTS
+import Footer from "./components/pages/footer";
+
+//REPORT
+import ReportGenerator from "./components/pages/report/reportPage";
+import Report from "./components/pages/report/reporView"
 
 export const UserContext = createContext();
 //test change
@@ -53,7 +67,15 @@ const App = () => {
           <Route exact path="/createTicket" element={<CreateTicket />} />
           <Route exact path="/viewTickets" element={<TicketList />} />
           <Route exact path="/editTicket/:id" element={<TicketForm />} />
+          <Route exact path="/managerPage" element={<ManagerPage />} />
+          <Route exact path="/serverPage" element={<ServerPage />} />
+          <Route exact path="/serverItemsList" element={<ServerItemsList />} />
+          <Route exact path="/managerViewTickets" element={<ManagerViewTickets/>}/>
+          <Route exact path="/generateReport" element={<ReportGenerator/>}/>
+        <Route exact path="/report/:date" element={<Report/>}/> 
+          
         </Routes>
+        <Footer/>
       </UserContext.Provider>
     </>
   );
