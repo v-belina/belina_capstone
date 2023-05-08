@@ -6,7 +6,7 @@ const ManagerPage = () => {
 
   return (
     <div className="d-flex justify-content-center">
-      <Card style={{ width: '28rem' }} className="mx-2 my-2 custom-card">
+      <Card style={{ width: '28rem',background: 'rgba(255, 255, 255, 0.5)', border: 'none' }} className="mx-2 my-2 custom-card">
         <Card.Body className="text-center">
           <h1>Welcome to VVB</h1>
           <Card.Title>You chose Manager role</Card.Title>

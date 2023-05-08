@@ -51,7 +51,7 @@ export default function CreateItem() {
   // We refer to the functions we defined above for handling form changes.
   return (
     <div className="d-flex justify-content-center">
-      <Card body outline color="success" className="mx-1 my-2 custom-card" style={{ width: '30rem' }}>
+      <Card body outline color="success" className="mx-1 my-2 custom-card" style={{ width: '30rem', background: 'rgba(255, 255, 255, 0.5)', border: 'none' }}>
         <Card.Title>Add Item</Card.Title>
         <Card.Body> 
         <Form>

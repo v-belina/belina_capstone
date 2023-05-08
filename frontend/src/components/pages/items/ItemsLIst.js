@@ -73,7 +73,7 @@ export default function ItemsList() {
             return (
               <Card
                 key={_id}
-                style={{ width: "350px", maxWidth: "90%", margin: "10px" }}
+                style={{ width: "350px", maxWidth: "90%", margin: "10px", background: 'rgba(255, 255, 255, 0.5)', border: 'none' }}
                 className="custom-card"
               >
                 <Card.Body>
@@ -109,7 +109,7 @@ export default function ItemsList() {
 
   return (
       <div
-        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center",background: 'rgba(255, 255, 255, 0.5)', border: 'none' }}
       >
         <div>
           <List />

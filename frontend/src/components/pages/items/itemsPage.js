@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const ItemsPage = () => {
   return (
     <div className="d-flex justify-content-center">
-      <Card style={{ width: "30rem" }} className="mx-2 my-2 custom-card">
+      <Card style={{ width: "30rem",background: 'rgba(255, 255, 255, 0.5)', border: 'none' }} className="mx-2 my-2 custom-card">
         <Card.Body>
           <Card.Title>List of all of the items can be found here</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">

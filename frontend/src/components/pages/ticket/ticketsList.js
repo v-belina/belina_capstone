@@ -100,7 +100,7 @@ function TicketList() {
               <Card
                 key={ticket._id}
                 className="mx-2 my-2 custom-card"
-                style={{ width: "18rem" }}
+                style={{ width: "18rem",background: 'rgba(255, 255, 255, 0.5)', border: 'none' }}
               >
                 <Card.Header>Ticket Number: {ticket.ticketNumber}</Card.Header>
                 <Card.Body>

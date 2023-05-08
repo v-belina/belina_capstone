@@ -41,7 +41,7 @@ export default function serverItemsList() {
             return (
               <Card
                 key={_id}
-                style={{ width: "250px", maxWidth: "90%", margin: "10px" }}
+                style={{ width: "250px", maxWidth: "90%", margin: "10px",background: 'rgba(255, 255, 255, 0.5)', border: 'none' }}
                 className="custom-card"
               >
                 <Card.Body>

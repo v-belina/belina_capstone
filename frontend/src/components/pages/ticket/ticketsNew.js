@@ -84,7 +84,7 @@ export default function CreateTicket() {
         outline
         color="success"
         className="mx-1 my-2 custom-card"
-        style={{ width: "30rem" }}
+        style={{ width: "30rem",background: 'rgba(255, 255, 255, 0.5)', border: 'none' }}
       >
         <Card.Title>Create New Ticket</Card.Title>
         <Form onSubmit={onSubmit}>
