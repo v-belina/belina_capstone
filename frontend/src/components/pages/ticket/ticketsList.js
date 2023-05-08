@@ -125,12 +125,12 @@ function TicketList() {
                   >
                     View Ticket
                   </Button>
-                  {/*  THE FOLLOWING BUTTON HAD BEEN COMMENTED OUT*/}
-                  {/* <Button variant="danger" 
+                  {/* THIS DELTES THE TICKET, NOT CASHES IT OUT*/}
+                   <Button variant="danger" 
                   className="btn btn-primary mr-4 mx-1 my-1"
                   onClick={() => deleteTicket(ticket)}>
-                    Delete Ticket
-                  </Button> */}
+                    Cash out
+                  </Button> 
                 </Card.Body>
               </Card>
             )
